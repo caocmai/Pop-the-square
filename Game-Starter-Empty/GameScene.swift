@@ -28,8 +28,8 @@ class GameScene: SKScene {
         
         //TODO: Create three squares with the names one,two,three
         self.createSquares(name: "one")
-        self.createSquares(name: "one")
-        self.createSquares(name: "one")
+        self.createSquares(name: "two")
+        self.createSquares(name: "three")
         
         //Setup the scoreLabel
         labelSetUp()
@@ -90,17 +90,17 @@ class GameScene: SKScene {
                 // Why optional for name?
                 self.createSquares(name: square.name!)
             }
-        })
+        }
+        )
         
         
         //TODO: Have the square run the above animation forever and add the square to the SKScene!
         
-        if score >= 0 {
+        if score < 0 {
+            self.scoreLabel.text = ("Game Over")
+        } else {
             square.run(SKAction.repeatForever(action))
             addChild(square)
-        } else {
-            self.scoreLabel.text = ("Game Over")
-//            square.removeFromParent()
         }
     }
     
